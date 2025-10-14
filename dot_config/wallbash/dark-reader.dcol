@@ -1,0 +1,29 @@
+$HOME/.cache/wal/dark-reader.json
+{
+  "theme": {
+      "mode": 1,
+      "brightness": 100,
+      "contrast": 100,
+      "grayscale": 0,
+      "sepia": 0,
+      "useFont": false,
+      "fontFamily": "Open Sans",
+      "textStroke": 0,
+      "engine": "dynamicTheme",
+      "stylesheet": "",
+      "darkSchemeBackgroundColor": "#<wallbash_pry1>",
+      "darkSchemeTextColor": "#<wallbash_txt1>",
+      "lightSchemeBackgroundColor": "#dcdad7",
+      "lightSchemeTextColor": "#181a1b",
+      "scrollbarColor": "",
+      "selectionColor": "auto",
+      "styleSystemControls": false,
+      "lightColorScheme": "Default",
+      "darkColorScheme": "Default",
+      "immediateModify": false
+  },
+
+  "disabledFor": [
+      "github.com"
+  ]
+}

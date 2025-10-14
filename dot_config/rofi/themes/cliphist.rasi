@@ -1,0 +1,93 @@
+@theme "~/.config/rofi/colors.rasi"
+
+* {
+    background-color: transparent;
+    text-color: @main-fg;
+    font: "JetBrainsMono Nerd Font 10";
+}
+
+window {
+    background-color: @main-bg;
+    border: 1px;
+    border-color: @main-br;
+    border-radius: 8px;
+    width: 450px;
+    padding: 15px;
+    location: center;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    spacing: 12px;
+}
+
+inputbar {
+    children: [textbox-prompt-colon, entry];
+    background-color: @main-ex;
+    border-radius: 6px;
+    padding: 10px 14px;
+    spacing: 10px;
+}
+
+textbox-prompt-colon {
+    enabled: true;
+    expand: false;
+    str: "󰅍 ";
+    text-color: @main-br;
+}
+
+entry {
+    placeholder: "Search clipboard...";
+    placeholder-color: @main-br;
+    text-color: @main-fg;
+    cursor-color: @main-fg;
+}
+
+listview {
+    lines: 8;
+    spacing: 4px;
+    scrollbar: false;
+    cycle: false;
+    dynamic: true;
+}
+
+element {
+    padding: 10px 12px;
+    border-radius: 5px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @main-fg;
+}
+
+element selected.normal {
+    background-color: @select-bg;
+    text-color: @select-fg;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @main-fg;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+    cursor: pointer;
+}
+
+element-text selected {
+    text-color: @select-fg;
+}
+
+message {
+    background-color: @main-ex;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+textbox {
+    text-color: @main-br;
+}

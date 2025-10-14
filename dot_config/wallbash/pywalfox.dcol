@@ -1,0 +1,27 @@
+$HOME/.cache/wal/colors.json
+{
+  "special": {
+    "background": "#<wallbash_pry1>",
+    "foreground": "#<wallbash_txt1>",
+    "cursor": "#<wallbash_txt1>"
+  },
+  "colors": {
+    "color0": "#<wallbash_pry1>",
+    "color1": "#<wallbash_pry2>",
+    "color2": "#<wallbash_pry3>",
+    "color3": "#<wallbash_pry4>",
+    "color4": "#<wallbash_1xa5>",
+    "color5": "#<wallbash_2xa5>",
+    "color6": "#<wallbash_3xa5>",
+    "color7": "#<wallbash_4xa5>",
+    "color8": "#<wallbash_1xa1>",
+    "color9": "#<wallbash_2xa1>",
+    "color10": "#<wallbash_3xa1>",
+    "color11": "#<wallbash_4xa1>",
+    "color12": "#<wallbash_1xa7>",
+    "color13": "#<wallbash_2xa7>",
+    "color14": "#<wallbash_3xa7>",
+    "color15": "#FFFFFF"
+  },
+  "wallpaper": ""
+}

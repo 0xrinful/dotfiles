@@ -1,0 +1,155 @@
+@import "colors.css";
+
+* {
+  font-size: 12.5px;
+  font-family: "JetBrainsMono Nerd Font";
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: @bar-bg;
+  color: @bar-fg;
+}
+
+tooltip {
+  background-color: alpha(@bar-solid-bg, 0.9);
+  color: @bar-fg;
+  border-radius: 4px;
+}
+
+.modules-left:first-child {
+  margin-left: 10px;
+}
+
+.modules-right:last-child {
+  margin-right: 5px;
+}
+
+/* Left - Modules */
+
+/* Workspaces */
+
+#workspaces button {
+  min-width: 0px;
+  padding: 4px 14px;
+  margin: 5px 5px 5px 0;
+  border-radius: 4px;
+  font-weight: bold;
+  background-color: @accent-bg;
+  transition: width 250ms ease-in-out;
+  transition: background-color 350ms ease-in-out;
+}
+
+#workspaces button.focused {
+  background-color: @hover-bg;
+  min-width: 10px;
+}
+
+#workspaces button:not(.focused):hover {
+  background-color: @hover-alt-bg;
+}
+
+/* Center - Modules */
+
+/* Clock */
+
+#clock {
+  font-weight: bold;
+  color: @accent-fg;
+  font-size: 13px;
+}
+
+/* Right - Modules */
+
+.modules-right > widget > * {
+  margin: 4px 0px 4px 5px;
+  border-radius: 4px;
+  padding: 5px 7px;
+  color: @icons-fg;
+}
+
+/* Cpu */
+
+#cpu {
+  background-color: @color1;
+}
+
+/* Memory */
+
+#memory {
+  background-color: @color2;
+}
+
+/* Temperature */
+
+#temperature {
+  background-color: @color3;
+}
+
+#temperature.cpu {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0.5px solid #333;
+}
+
+#temperature.gpu {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: 0;
+}
+
+/* Backlight */
+
+#backlight {
+  background-color: @color4;
+}
+
+/* Pulseaudio */
+
+#pulseaudio {
+  background-color: @color5;
+}
+
+/* Tray */
+
+#tray {
+  background-color: @color6;
+  color: @accent-fg;
+}
+
+#tray menu {
+  padding: 3px;
+}
+
+#tray menu > * {
+  min-height: 20px;
+  padding: 3px 0;
+}
+
+#tray menu separator {
+  min-height: 1.6px;
+  padding: 0;
+}
+
+/* Network */
+
+#network {
+  background-color: @color6;
+  color: @accent-color;
+}
+
+/* Battery */
+
+#battery {
+  background-color: @color7;
+}
+
+#custom-power {
+  background-color: @color8;
+  padding-left: 10px;
+  padding-right: 13px;
+}

@@ -1,0 +1,5 @@
+$HOME/.config/wlogout/colors.css
+@define-color win-bg rgba(<wallbash_1xa1_rgb>, 0.25);
+@define-color btn-bg rgba(<wallbash_pry1_rgb>, 0.85);
+@define-color hover-bg rgba(<wallbash_2xa5_rgb>, 0.90);
+@define-color focus-bg rgba(<wallbash_2xa6_rgb>, 0.90);

@@ -1,0 +1,4 @@
+$HOME/.config/niri/niri.colors|$HOME/.config/wallbash/scripts/niri.sh
+NIRI_ACTIVE_GRADIENT='from="#<wallbash_pry4>ff" to="#<wallbash_4xa1>ff" angle=45'
+NIRI_INACTIVE_GRADIENT='from="#<wallbash_pry1>ff" to="#<wallbash_pry2>ff" angle=45'
+NIRI_BACKDROP_COLOR='"#<wallbash_4xa2>"'

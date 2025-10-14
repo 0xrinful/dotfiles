@@ -1,0 +1,26 @@
+{
+  "layer": "bottom",
+  "include": [
+    "$XDG_CONFIG_HOME/waybar/modules/left.json",
+    "$XDG_CONFIG_HOME/waybar/modules/center.json",
+    "$XDG_CONFIG_HOME/waybar/modules/right.json"
+  ],
+  "modules-left": [
+    "niri/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "temperature#cpu",
+    "temperature#gpu",
+    "backlight",
+    "pulseaudio",
+    "tray",
+    "network",
+    "battery",
+    "custom/power"
+  ]
+}

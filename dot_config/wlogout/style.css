@@ -1,0 +1,70 @@
+@import "colors.css";
+
+* {
+  font-size: 25px;
+}
+
+window {
+  background-color: @win-bg;
+}
+
+button {
+  color: white;
+  background-color: @btn-bg;
+  outline-style: none;
+  border: none;
+  border-width: 0px;
+  border-radius: 0px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+button:focus {
+  background-color: @focus-bg;
+  background-size: 30%;
+}
+
+button:hover {
+  background-color: @hover-bg;
+  background-size: 40%;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682);
+}
+
+#lock {
+  background-image: image(url("icons/lock_white.png"));
+  border-radius: 50px 0px 0px 50px;
+  margin: 280px 0px 280px 280px;
+}
+
+#logout,
+#suspend,
+#shutdown,
+#hibernate {
+  border-radius: 0px 0px 0px 0px;
+  margin: 280px 0px;
+}
+
+#logout {
+  background-image: image(url("icons/logout_white.png"));
+}
+
+#suspend {
+  background-image: image(url("icons/suspend_white.png"));
+}
+
+#shutdown {
+  background-image: image(url("icons/shutdown_white.png"));
+}
+
+#hibernate {
+  background-image: image(url("icons/hibernate_white.png"));
+}
+
+#reboot {
+  background-image: image(url("icons/reboot_white.png"));
+  border-radius: 0 50px 50px 0;
+  margin: 280px 280px 280px 0;
+}

@@ -1,0 +1,10 @@
+$HOME/.config/rofi/colors.rasi
+* {
+    main-bg:            #<wallbash_pry1>E4;
+    main-fg:            #<wallbash_1xa9>E6;
+    main-br:            #<wallbash_4xa6>f6;
+    main-ex:            #<wallbash_pry2>E6;
+    select-bg:          #<wallbash_4xa8>80;
+    select-fg:          #<wallbash_4xa1>E6;
+}
+

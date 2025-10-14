@@ -1,0 +1,320 @@
+// █░░ ▄▀█ █░█ █▄░█ █▀▀ █░█
+// █▄▄ █▀█ █▄█ █░▀█ █▄▄ █▀█
+
+spawn-at-startup "swww-daemon" "--format" "argb"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "battery-notify.sh"
+
+// █▀▀ █▄░█ █░█
+// ██▄ █░▀█ ▀▄▀
+
+environment {
+  GDK_BACKEND "wayland"
+  QT_QPA_PLATFORM "wayland"
+  SDL_VIDEODRIVER "wayland"
+  CLUTTER_BACKEND "wayland"
+
+  XDG_CURRENT_DESKTOP "niri"
+  XDG_SESSION_TYPE "wayland"
+  XDG_SESSION_DESKTOP "niri"
+
+
+  QT_AUTO_SCREEN_SCALE_FACTOR "1" 
+  QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+
+
+  MOZ_ENABLE_WAYLAND "1"
+  GDK_SCALE "1"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+// █ █▄░█ █▀█ █░█ ▀█▀
+// █ █░▀█ █▀▀ █▄█ ░█░
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ara"
+            options "caps:super"
+        }
+        repeat-delay 600
+        repeat-rate 25
+        numlock
+    }
+
+    touchpad {
+        tap
+        dwt
+        drag true
+        scroll-method "two-finger"
+        accel-profile "flat"
+        accel-speed 1.0
+    }
+
+    mouse {
+        accel-speed 0.0
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// █░░ ▄▀█ █▄█ █▀█ █░█ ▀█▀
+// █▄▄ █▀█ ░█░ █▄█ █▄█ ░█░
+
+output "eDP-1" {
+    mode "1920x1080@60"
+    scale 1.0
+    position x=0 y=0
+    transform "normal"
+}
+
+layout {
+    background-color "transparent"
+    gaps 3
+    struts {
+        left 5
+        right 5
+        top 5
+        bottom 5
+    }
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    border {
+        width 2
+        active-gradient from="#FAEFC6ff" to="#524929ff" angle=45
+        inactive-gradient from="#333130ff" to="#534C47ff" angle=45
+    }
+
+    focus-ring {
+        off
+    }
+}
+
+overview {
+  backdrop-color "#6B613A"
+}
+
+// █▀▄▀█ █ █▀ █▀▀ █▀▀ █░░ █░░ ▄▀█ █▄░█ █▀▀ █▀█ █░█ █▀
+// █░▀░█ █ ▄█ █▄▄ ██▄ █▄▄ █▄▄ █▀█ █░▀█ ██▄ █▄█ █▄█ ▄█
+
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 20
+}
+
+clipboard {
+}
+
+// screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S_screenshot.png"
+// You can also set this to null to disable saving screenshots to disk.
+screenshot-path null
+
+//  █▄▀ █▀▀ █▄█ █▄▄ █ █▄░█ █▀▄ █ █▄░█ █▀▀ █▀
+//  █░█ ██▄ ░█░ █▄█ █ █░▀█ █▄▀ █ █░▀█ █▄█ ▄█
+
+binds {
+    Mod+Slash { show-hotkey-overlay; }
+
+    Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+E hotkey-overlay-title="Open a Web Browser: firefox" { spawn "firefox"; }
+    Mod+F hotkey-overlay-title="Open a File Manager: dolphin" { spawn "dolphin"; }
+    Mod+A hotkey-overlay-title="App launcher" { spawn-sh "rofi-launcher.sh"; }
+    Mod+V hotkey-overlay-title="Clipboard history" { spawn "cliphist.sh"; }
+    Mod+Shift+W hotkey-overlay-title="Wallpaper Selector" { spawn "wallpaper-selector.sh"; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "volumecontrol.sh" "-o" "i"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "volumecontrol.sh" "-o" "d"; }
+    XF86AudioMute        allow-when-locked=true { spawn "volumecontrol.sh" "-o" "m"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "volumecontrol.sh" "-i" "m"; }
+
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnesscontrol.sh" "i"; } 
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnesscontrol.sh" "d"; } 
+
+    Mod+O repeat=false { toggle-overview; }
+    Mod+X { close-window; }
+
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+L     { move-column-right; }
+
+    Mod+Alt+J { move-window-to-workspace-down; }
+    Mod+Alt+K   { move-window-to-workspace-up; }
+
+    Mod+Ctrl+J         { move-workspace-down; }
+    Mod+Ctrl+K         { move-workspace-up; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+W { maximize-column; }
+    Alt+Return { fullscreen-window; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+I       { spawn "keyboardswitch.sh"; }
+
+    Print { screenshot-screen; }
+    Mod+P { screenshot; }
+
+    Mod+Backspace { spawn "logout-menu.sh"; }
+    Mod+Escape { quit; }
+    Mod+F1 { power-off-monitors; }
+}
+
+// █░█░█ █ █▄░█ █▀▄ █▀█ █░█░█   █▀█ █░█ █░░ █▀▀ █▀
+// ▀▄▀▄▀ █ █░▀█ █▄▀ █▄█ ▀▄▀▄▀   █▀▄ █▄█ █▄▄ ██▄ ▄█
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  open-floating true
+}
+
+window-rule {
+  match app-id="firefox"
+  draw-border-with-background false
+  opacity 0.95
+}
+
+window-rule {
+  match title="About Mozilla Firefox" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="celluloid"
+  open-maximized true
+}
+
+window-rule {
+  match app-id="org.kde.dolphin"
+  opacity 0.90
+}
+
+
+window-rule {
+  match app-id="org.kde.dolphin" title="Choose Application — Dolphin"
+  default-column-width { fixed 450; }
+  default-window-height { fixed 500; }
+}
+
+window-rule {
+  match app-id="kitty" is-focused=false
+  opacity 0.85
+}
+
+window-rule {
+  match app-id="kitty" is-focused=true
+  opacity 0.95
+}
+
+window-rule {
+  match app-id="org.pulseaudio.pavucontrol" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="nm-applet" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="nm-connection-editor" 
+  open-floating true
+}
+
+window-rule {
+  match app-id="imv" 
+  open-floating true
+}
+
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+// █░░ ▄▀█ █▄█ █▀▀ █▀█   █▀█ █░█ █░░ █▀▀ █▀
+// █▄▄ █▀█ ░█░ ██▄ █▀▄   █▀▄ █▄█ █▄▄ ██▄ ▄█
+
+layer-rule {
+  match namespace="notifications"
+  opacity 1.0
+}
+
+
+// ▄▀█ █▄░█ █ █▀▄▀█ ▄▀█ ▀█▀ █ █▀█ █▄░█
+// █▀█ █░▀█ █ █░▀░█ █▀█ ░█░ █ █▄█ █░▀█
+
+// animations {}
+
+// include "./keybindings.kdl"
+// include "./windowrules.kdl"

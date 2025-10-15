@@ -105,8 +105,8 @@ layout {
 
     border {
         width 2
-        active-gradient from="#FAEFC6ff" to="#524929ff" angle=45
-        inactive-gradient from="#333130ff" to="#534C47ff" angle=45
+        active-gradient from="#B4BDFEff" to="#292E52ff" angle=45
+        inactive-gradient from="#191826ff" to="#494D6Aff" angle=45
     }
 
     focus-ring {
@@ -115,7 +115,7 @@ layout {
 }
 
 overview {
-  backdrop-color "#6B613A"
+  backdrop-color "#3A406B"
 }
 
 // █▀▄▀█ █ █▀ █▀▀ █▀▀ █░░ █░░ ▄▀█ █▄░█ █▀▀ █▀█ █░█ █▀
@@ -149,7 +149,7 @@ binds {
     Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+E hotkey-overlay-title="Open a Web Browser: firefox" { spawn "firefox"; }
     Mod+F hotkey-overlay-title="Open a File Manager: dolphin" { spawn "dolphin"; }
-    Mod+A hotkey-overlay-title="App launcher" { spawn-sh "rofi-launcher.sh"; }
+    Mod+A hotkey-overlay-title="App launcher" { spawn "rofi-launcher.sh"; }
     Mod+V hotkey-overlay-title="Clipboard history" { spawn "cliphist.sh"; }
     Mod+Shift+W hotkey-overlay-title="Wallpaper Selector" { spawn "wallpaper-selector.sh"; }
 
@@ -211,6 +211,8 @@ binds {
 
     Print { screenshot-screen; }
     Mod+P { screenshot; }
+    // Mod+Shift+P { spawn-sh "niri msg pick-color | grep 'Hex:' | cut -d' ' -f2 | wl-copy"; }
+    Mod+Shift+P { spawn "hyprpicker" "-an"; }
 
     Mod+Backspace { spawn "logout-menu.sh"; }
     Mod+Escape { quit; }
@@ -282,6 +284,11 @@ window-rule {
 window-rule {
   match app-id="imv" 
   open-floating true
+}
+
+window-rule {
+  match app-id="org.gnome.Evince"
+  open-maximized true
 }
 
 

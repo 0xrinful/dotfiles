@@ -17,13 +17,6 @@ TRANSITION_TYPE="fade"
 TRANSITION_FPS="60"
 TRANSITION_DURATION="1"
 
-lnf() {
-  local src="$1"
-  local dest="$2"
-  [ -e "$dest" ] || [ -L "$dest" ] && rm -rf "$dest"
-  ln -s "$src" "$dest"
-}
-
 apply_colors() {
   wall_name="${1##*/}"
   wall_name="${wall_name%.*}"

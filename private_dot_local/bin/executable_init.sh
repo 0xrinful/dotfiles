@@ -23,7 +23,8 @@ echo "🎨 Applying GTK theme..."
 # ln -sf "$HOME/.local/share/themes/Wallbash-Gtk/gtk-4.0" "$HOME/.config/gtk-4.0"
 
 ### Ensure directories exist
-mkdir -p "$COLORS_DIR" "$CACHE_DIR"
+mkdir -p "$COLORS_DIR" "$HOME/.config/mako/icons/media" "$HOME/.config/Kvantum/wallbash"
+mkdir -p "$CACHE_DIR" "$HOME/.cache/wal"
 
 ### Generate wallpapers assets
 generate_wall_assets() {

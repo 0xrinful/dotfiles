@@ -11,7 +11,7 @@ spawn-at-startup "battery-notify.sh"
 
 environment {
   GDK_BACKEND "wayland"
-  QT_QPA_PLATFORM "wayland"
+  QT_QPA_PLATFORM "wayland;xcb"
   SDL_VIDEODRIVER "wayland"
   CLUTTER_BACKEND "wayland"
 

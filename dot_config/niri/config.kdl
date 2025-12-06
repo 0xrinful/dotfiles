@@ -3,7 +3,7 @@
 
 spawn-at-startup "swww-daemon" "--format" "argb"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
-spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 spawn-at-startup "battery-notify.sh"
 
 // █▀▀ █▄░█ █░█
@@ -105,8 +105,8 @@ layout {
 
     border {
         width 2
-        active-gradient from="#B4BDFEff" to="#292E52ff" angle=45
-        inactive-gradient from="#191826ff" to="#494D6Aff" angle=45
+        active-gradient from="#A9A7BEff" to="#2C2952ff" angle=45
+        inactive-gradient from="#1B1B29ff" to="#3A3A53ff" angle=45
     }
 
     focus-ring {
@@ -115,7 +115,7 @@ layout {
 }
 
 overview {
-  backdrop-color "#3A406B"
+  backdrop-color "#3E3A6B"
 }
 
 // █▀▄▀█ █ █▀ █▀▀ █▀▀ █░░ █░░ ▄▀█ █▄░█ █▀▀ █▀█ █░█ █▀

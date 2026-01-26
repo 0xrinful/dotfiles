@@ -90,18 +90,6 @@ tooltip {
   background-color: @color3;
 }
 
-#temperature.cpu {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: 0.5px solid #333;
-}
-
-#temperature.gpu {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  margin-left: 0;
-}
-
 /* Backlight */
 
 #backlight {

@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <!DOCTYPE gui SYSTEM 'kpartgui.dtd'>
-<gui name="dolphin" version="46">
+<gui name="dolphin" version="48">
  <MenuBar>
   <Menu name="file">
    <Action name="new_menu"/>
@@ -21,8 +21,6 @@
    <Action name="properties"/>
   </Menu>
   <Menu name="edit">
-   <Action name="edit_undo"/>
-   <Separator/>
    <Action name="edit_cut"/>
    <Action name="edit_copy"/>
    <Action name="copy_location"/>
@@ -77,6 +75,9 @@
    <Action name="compare_files"/>
    <Action name="change_remote_encoding"/>
   </Menu>
+  <Menu name="settings">
+   <Action name="window_color_sheme"/>
+  </Menu>
  </MenuBar>
  <ToolBar alreadyVisited="1" name="mainToolBar" noMerge="1">
   <Spacer name="spacer_0"/>
@@ -113,8 +114,6 @@
   </disable>
  </State>
  <ActionProperties scheme="Default">
-  <Action name="view_mode" priority="0"/>
-  <Action name="view_settings" priority="0"/>
   <Action name="compact" priority="0"/>
   <Action name="details" priority="0"/>
   <Action name="edit_copy" priority="0"/>
@@ -128,6 +127,8 @@
   <Action name="stop" priority="0"/>
   <Action name="toggle_filter" priority="0"/>
   <Action name="toggle_search" priority="0"/>
+  <Action name="view_mode" priority="0"/>
+  <Action name="view_settings" priority="0"/>
   <Action name="view_zoom_in" priority="0"/>
   <Action name="view_zoom_out" priority="0"/>
   <Action name="view_zoom_reset" priority="0"/>

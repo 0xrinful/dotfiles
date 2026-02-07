@@ -167,19 +167,15 @@ print_success "All configuration files copied"
 # Step 4: Set executable permissions for scripts
 print_info "Setting executable permissions for scripts in ~/.local/bin..."
 
-if [[ -d "$HOME/.local/bin" ]]; then
-  chmod +x "$HOME/.local/bin"/*.sh 2>/dev/null || true
-  # Also handle scripts without .sh extension
-  find "$HOME/.local/bin" -type f -exec chmod +x {} \;
-  print_success "Executable permissions set"
-else
-  print_warning "~/.local/bin directory not found"
-fi
+chmod +x "$HOME/.local/bin"/*.sh 2>/dev/null || true
+# Also handle scripts without .sh extension
+find "$HOME/.local/bin" -type f -exec chmod +x {} \;
+print_success "Executable permissions set"
 
 # Step 5: Update font cache
 if command -v fc-cache &>/dev/null; then
   print_info "Updating font cache..."
-  fc-cache -fv
+  fc-cache -fv &>/dev/null
   print_success "Font cache updated"
 fi
 

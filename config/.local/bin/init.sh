@@ -29,6 +29,7 @@ gsettings set org.gnome.desktop.interface monospace-font-name 'CaskaydiaCove Ner
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
 gsettings set org.gnome.desktop.interface font-hinting 'full'
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.05
+gsettings set org.gnome.desktop.wm.preferences button-layout ''
 
 ### Ensure directories exist
 mkdir -p "$COLORS_DIR" "$HOME/.config/mako/icons/media" "$HOME/.config/Kvantum/wallbash"

@@ -133,47 +133,34 @@ print_info "Copying configuration files..."
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.local/bin"
 mkdir -p "$HOME/.local/share"
+mkdir -p "$HOME/.local/state"
 
-# Copy .config directories
-if [[ -d "$CONFIG_DIR/.config" ]]; then
-  print_info "Copying .config directories..."
-  cp -r "$CONFIG_DIR/.config"/* "$HOME/.config/"
-  print_success ".config directories copied"
-fi
+# Copy .config files
+print_info "Copying .config files..."
+cp -r "$CONFIG_DIR/.config"/* "$HOME/.config/"
+print_success ".config directories copied"
 
 # Copy .local/bin scripts
-if [[ -d "$CONFIG_DIR/.local/bin" ]]; then
-  print_info "Copying bin scripts..."
-  cp -r "$CONFIG_DIR/.local/bin"/* "$HOME/.local/bin/"
-  print_success "Bin scripts copied"
-fi
+print_info "Copying bin scripts..."
+cp -r "$CONFIG_DIR/.local/bin"/* "$HOME/.local/bin/"
+print_success "Bin scripts copied"
 
 # Copy .local/share (fonts, themes, icons, etc.)
-if [[ -d "$CONFIG_DIR/.local/share" ]]; then
-  print_info "Copying local share files (fonts, themes, icons)..."
-  cp -r "$CONFIG_DIR/.local/share"/* "$HOME/.local/share/"
-  print_success "Local share files copied"
-fi
+print_info "Copying local share files (fonts, themes, icons)..."
+cp -r "$CONFIG_DIR/.local/share"/* "$HOME/.local/share/"
+print_success "Local share files copied"
 
-# Copy individual config files in .config root
-for file in "$CONFIG_DIR/.config"/*; do
-  if [[ -f "$file" ]]; then
-    filename=$(basename "$file")
-    print_info "Copying .config/$filename..."
-    cp "$file" "$HOME/.config/"
-  fi
-done
+# Copy .local/state files
+print_info "Copying local state files"
+cp -r "$CONFIG_DIR/.local/state"/* "$HOME/.local/state/"
+print_success "State share files copied"
 
 # Copy dotfiles
-if [[ -f "$CONFIG_DIR/.gtkrc-2.0" ]]; then
-  print_info "Copying .gtkrc-2.0..."
-  cp "$CONFIG_DIR/.gtkrc-2.0" "$HOME/"
-fi
+print_info "Copying .gtkrc-2.0..."
+cp "$CONFIG_DIR/.gtkrc-2.0" "$HOME/"
 
-if [[ -f "$CONFIG_DIR/.zshenv" ]]; then
-  print_info "Copying .zshenv..."
-  cp "$CONFIG_DIR/.zshenv" "$HOME/"
-fi
+print_info "Copying .zshenv..."
+cp "$CONFIG_DIR/.zshenv" "$HOME/"
 
 print_success "All configuration files copied"
 

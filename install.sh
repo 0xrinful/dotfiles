@@ -230,8 +230,7 @@ fi
 # Enable and start polkit-gnome service
 if systemctl --user list-unit-files polkit-gnome.service &>/dev/null; then
   print_info "Enabling polkit-gnome.service..."
-  systemctl --user enable --now polkit-gnome.service
-  print_success "polkit-gnome.service enabled and started"
+  systemctl --user enable --now polkit-gnome.service 2>/dev/null || print_warning "Failed to enable polkit-gnome.service"
 else
   print_warning "polkit-gnome.service not found"
 fi

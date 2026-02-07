@@ -1,0 +1,18 @@
+$HOME/.config/kdeglobals
+[Colors:View]
+BackgroundNormal= #<wallbash_pry1>
+
+[General]
+TerminalApplication=kitty
+
+[Icons]
+Theme=Tela-circle-dracula
+
+[KDE]
+widgetStyle=kvantum
+
+[UiSettings]
+ColorScheme=colors
+
+[Wallet]
+Enabled=false

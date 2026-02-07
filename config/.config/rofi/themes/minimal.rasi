@@ -1,0 +1,125 @@
+configuration {
+  show-icons: true;
+  drun-display-format: "{name}";
+  font: "JetBrainsMono Nerd Font 10";
+  icon-theme: "Tela-circle-dracula";
+}
+
+@theme "~/.config/rofi/colors.rasi"
+
+* {
+    background-color: transparent;
+    text-color: @main-fg;
+}
+
+window {
+    background-color: @main-bg;
+    border: 1px;
+    border-color: @main-br;
+    border-radius: 10px;
+    width: 650px;
+    padding: 20px;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    spacing: 18px;
+}
+
+inputbar {
+    children: [textbox-prompt-colon, entry];
+    background-color: @main-ex;
+    border-radius: 8px;
+    padding: 14px 18px;
+    spacing: 12px;
+}
+
+textbox-prompt-colon {
+    enabled: true;
+    expand: false;
+    str: " ";
+    text-color: @main-br;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+entry {
+    placeholder: "Search...";
+    placeholder-color: @main-br;
+    text-color: @main-fg;
+    cursor-color: @main-fg;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+listview {
+    lines: 7;
+    spacing: 6px;
+    scrollbar: false;
+    cycle: false;
+    dynamic: true;
+}
+
+element {
+    padding: 12px 14px;
+    border-radius: 6px;
+    spacing: 14px;
+    orientation: horizontal;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @main-fg;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color: @main-fg;
+}
+
+element selected.normal {
+    background-color: @select-bg;
+    text-color: @select-fg;
+}
+
+element selected.active {
+    background-color: @select-bg;
+    text-color: @select-fg;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @main-fg;
+}
+
+element-icon {
+    size: 28px;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 8px 0 0;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+    cursor: pointer;
+}
+
+element-text selected {
+    text-color: @select-fg;
+}
+
+/* Additional descriptions for apps */
+element-text alternate {
+    text-color: @main-br;
+    font: "Sans 9";
+}
+
+message {
+    background-color: @main-ex;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+textbox {
+    text-color: @main-br;
+}

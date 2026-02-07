@@ -1,0 +1,93 @@
+# System
+pipewire
+pipewire-alsa
+pipewire-audio
+pipewire-jack
+pipewire-pulse
+gst-plugin-pipewire
+wireplumber
+pavucontrol
+pamixer
+networkmanager
+network-manager-applet
+bluez
+bluez-utils
+blueman
+brightnessctl
+playerctl
+udiskie
+
+# Display Manager
+sddm
+qt5-quickcontrols
+qt5-quickcontrols2
+qt5-graphicaleffects
+
+# Window Manager
+niri
+mako
+rofi
+waybar
+swww
+wlogout
+grim
+hyprpicker
+slurp
+satty
+cliphist
+wl-clip-persist
+
+# Dependencies
+polkit-gnome
+xdg-desktop-portal-gnome
+xdg-desktop-portal-gtk
+xdg-user-dirs
+gnome-keyring
+pacman-contrib
+parallel
+jq
+preload
+imagemagick
+qt5-imageformats
+ffmpegthumbs
+kde-cli-tools
+libnotify
+noto-fonts-emoji
+
+# Theming
+nwg-look
+qt5ct
+qt6ct
+kvantum
+kvantum-qt5
+qt5-wayland
+qt6-wayland
+
+# Applications
+firefox
+kitty
+dolphin
+ark
+unzip
+nwg-displays
+nvim
+fzf
+btop
+# evince
+# superfile
+# rnote
+# celluloid
+# imv
+# cava
+# lazygit
+# lazysql
+
+# Shell
+zsh
+starship
+fastfetch
+eza
+bat
+fd
+rg
+zoxide

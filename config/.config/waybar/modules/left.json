@@ -1,0 +1,13 @@
+{
+  "custom/logo": {
+    "format": " 󰣇 ",
+    "tooltip": false
+  },
+  "niri/workspaces": {
+    "format": "{value}",
+    "format-icons": {
+      "active": "",
+      "default": ""
+    }
+  }
+}

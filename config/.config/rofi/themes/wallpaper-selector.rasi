@@ -1,0 +1,118 @@
+@theme "~/.config/rofi/colors.rasi"
+
+* {
+    background-color: transparent;
+    text-color: @main-fg;
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+window {
+    transparency: "real";
+    background-color: @main-bg;
+    border: 2px solid;
+    border-color: @main-br;
+    border-radius: 12px;
+    width: 70%;
+    height: 65%;
+    padding: 20px;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing: 15px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @main-ex;
+    border: 2px solid;
+    border-color: @main-br;
+    border-radius: 8px;
+    padding: 12px 16px;
+    spacing: 10px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @main-br;
+    font: "JetBrainsMono Nerd Font Bold 12";
+}
+
+entry {
+    background-color: transparent;
+    text-color: @main-fg;
+    placeholder: "Search wallpapers...";
+    placeholder-color: @main-fg;
+}
+
+listview {
+    background-color: transparent;
+    columns: 3;
+    lines: 1;
+    spacing: 15px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    background-color: @main-ex;
+    border: 2px solid;
+    border-color: transparent;
+    border-radius: 10px;
+    padding: 10px;
+    orientation: vertical;
+    spacing: 8px;
+}
+
+element normal.normal {
+    background-color: @main-ex;
+    text-color: @main-fg;
+}
+
+element selected.normal {
+    background-color: @select-bg;
+    text-color: @select-fg;
+    border-color: @main-br;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 25em;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    font: "JetBrainsMono Nerd Font 10";
+}
+
+element selected.normal element-text {
+    text-color: @select-fg;
+    font: "JetBrainsMono Nerd Font Bold 10";
+}
+
+scrollbar {
+    handle-width: 8px;
+    handle-color: @main-br;
+    border-radius: 4px;
+    background-color: @main-ex;
+}
+
+message {
+    background-color: @main-ex;
+    border: 2px solid;
+    border-color: @main-br;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: @main-fg;
+}

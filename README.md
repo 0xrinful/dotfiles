@@ -11,54 +11,29 @@ This setup is for people who want a system that is:
 - stable over time
 - not split across hundreds of confusing directories
 
-This rice is intentionally **boring in the good way**: predictable,
-readable, and easy to own.
-
----
-
-## Why This Exists
-
-I used **[HyDE](https://github.com/HyDE-Project/HyDE)** for about **1.5
-years**.
-
-It is a powerful and visually impressive project, but over time it
-became frustrating to maintain *my own* workflow on top of it.
-
-Issues I personally ran into:
-
-- frequent breaking changes
-- constantly shifting “recommended” ways of doing things
-- deep abstraction layers
-- tight coupling between internal tools
-- replacing individual components felt harder than it should be
-
-When I discovered **niri**, it gave me a reason to leave Hyprland and
-start fresh with **my own dotfiles**, focused on **clarity over
-cleverness**.
-
 ---
 
 ## Preview
 
 <!-- Wallpapers -->
+<img src="assets/wall-1.png">
+<img src="assets/wall-3.png">
 <table>
   <tr>
-    <td><img src="assets/wall-1.png" width="500"></td>
     <td><img src="assets/wall-2.png" width="500"></td>
-  </tr>
-  <tr>
-    <td><img src="assets/wall-3.png" width="500"></td>
     <td><img src="assets/wall-4.png" width="500"></td>
   </tr>
 </table>
 
 <!-- App Screenshots -->
+<img src="assets/apps-1.png">
 <table>
-  <tr>
-    <td><img src="assets/apps-1.png" width="400"></td>
-    <td><img src="assets/apps-2.png" width="400"></td>
-    <td><img src="assets/apps-3.png" width="400"></td>
+   <tr>
+    <td><img src="assets/apps-2.png" width="500"></td>
+    <td><img src="assets/apps-3.png" width="500"></td>
   </tr>
+</table>
+<table>
   <tr>
     <td><img src="assets/rofi.png" width="300"></td>
     <td><img src="assets/rofi-2.png" width="300"></td>

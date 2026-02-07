@@ -43,21 +43,21 @@ cleverness**.
 <!-- Wallpapers -->
 <table>
   <tr>
-    <td><img src="assets/wall-1.png" width="300"></td>
-    <td><img src="assets/wall-2.png" width="300"></td>
+    <td><img src="assets/wall-1.png" width="500"></td>
+    <td><img src="assets/wall-2.png" width="500"></td>
   </tr>
   <tr>
-    <td><img src="assets/wall-3.png" width="300"></td>
-    <td><img src="assets/wall-4.png" width="300"></td>
+    <td><img src="assets/wall-3.png" width="500"></td>
+    <td><img src="assets/wall-4.png" width="500"></td>
   </tr>
 </table>
 
 <!-- App Screenshots -->
 <table>
   <tr>
-    <td><img src="assets/apps-1.png" width="300"></td>
-    <td><img src="assets/apps-2.png" width="300"></td>
-    <td><img src="assets/apps-3.png" width="300"></td>
+    <td><img src="assets/apps-1.png" width="400"></td>
+    <td><img src="assets/apps-2.png" width="400"></td>
+    <td><img src="assets/apps-3.png" width="400"></td>
   </tr>
   <tr>
     <td><img src="assets/rofi.png" width="300"></td>

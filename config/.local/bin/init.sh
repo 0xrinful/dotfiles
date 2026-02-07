@@ -12,9 +12,19 @@ COLORS_DIR="$HOME/.config/swww/colors"
 CACHE_DIR="$HOME/.cache/wallpaper-selector"
 THUMB_SIZE="500x400"
 
-### GTK Symlink
+#-------------------------------
+# GNOME / GTK theme settings
+#-------------------------------
 echo "🎨 Applying GTK theme..."
 ln -sf "$HOME/.local/share/themes/Wallbash-Gtk/gtk-4.0" "$HOME/.config/gtk-4.0"
+
+gsettings set org.gnome.desktop.interface gtk-theme 'Wallbash-Gtk'
+gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-dracula'
+gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
+gsettings set org.gnome.desktop.interface font-name 'Cantarell 12'
+gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 12'
+gsettings set org.gnome.desktop.interface monospace-font-name 'CaskaydiaCove Nerd Font Mono 10'
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.05
 
 ### Ensure directories exist
 mkdir -p "$COLORS_DIR" "$HOME/.config/mako/icons/media" "$HOME/.config/Kvantum/wallbash"

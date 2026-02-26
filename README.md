@@ -67,7 +67,7 @@ After installation:
 Then run (one time only):
 
 ```bash
-./init.sh
+init.sh
 ```
 
 > `init.sh` is required only once.  

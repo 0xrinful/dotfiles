@@ -28,7 +28,7 @@ niri
 mako
 rofi
 waybar
-swww
+awww
 wlogout
 grim
 hyprpicker

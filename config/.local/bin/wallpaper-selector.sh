@@ -7,9 +7,9 @@ if pkill -x rofi; then
   exit 0
 fi
 
-WALLPAPER_DIR="$HOME/.config/swww/wallpapers"
+WALLPAPER_DIR="$HOME/.config/awww/wallpapers"
 CACHE_DIR="$HOME/.cache/wallpaper-selector"
-CURRENT_WALLPAPER_FILE="$HOME/.config/swww/current_wallpaper.txt"
+CURRENT_WALLPAPER_FILE="$HOME/.config/awww/current_wallpaper.txt"
 THUMB_SIZE="500x400"
 ROFI_THEME="wallpaper-selector.rasi"
 

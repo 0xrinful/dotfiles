@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 #===============================================================================
-# Wallpaper Manager for swww
+# Wallpaper Manager for awww
 # Usage:
 #   set-wallpaper           → Restore saved wallpaper (for startup)
 #   set-wallpaper <file>    → Set new wallpaper
 #===============================================================================
 
 ### Configuration
-WALL_DIR="$HOME/.config/swww/wallpapers"
-COLORS_DIR="$HOME/.config/swww/colors"
-CURRENT_FILE="$HOME/.config/swww/current_wallpaper.txt"
+WALL_DIR="$HOME/.config/awww/wallpapers"
+COLORS_DIR="$HOME/.config/awww/colors"
+CURRENT_FILE="$HOME/.config/awww/current_wallpaper.txt"
 
 ### Transition settings
 TRANSITION_TYPE="fade"
@@ -49,7 +49,7 @@ apply_wallpaper() {
   apply_colors "$wallpaper"
 
   # Apply wallpaper with transitions
-  swww img "$wallpaper" \
+  awww img "$wallpaper" \
     --transition-type "$TRANSITION_TYPE" \
     --transition-fps "$TRANSITION_FPS" \
     --transition-duration "$TRANSITION_DURATION"

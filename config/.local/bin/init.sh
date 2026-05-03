@@ -7,8 +7,8 @@
 set -euo pipefail
 
 ### Directories & Settings
-WALLPAPER_DIR="$HOME/.config/swww/wallpapers"
-COLORS_DIR="$HOME/.config/swww/colors"
+WALLPAPER_DIR="$HOME/.config/awww/wallpapers"
+COLORS_DIR="$HOME/.config/awww/colors"
 CACHE_DIR="$HOME/.cache/wallpaper-selector"
 THUMB_SIZE="500x400"
 

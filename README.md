@@ -99,7 +99,7 @@ If you want a “safe to run anywhere” installer, this is **not** that.
 │   │   ├── kitty/     # Terminal configuration
 │   │   ├── niri/      # Niri configuration
 │   │   ├── rofi/      # Launcher configuration
-│   │   ├── swww/      # Wallpapers (you can add walls here)
+│   │   ├── awww/      # Wallpapers (you can add walls here)
 │   │   ├── zsh/       # Zsh shell configuration
 │   │   └── waybar/    # Waybar config and style
 │   ├── .local/
@@ -127,7 +127,7 @@ This rice intentionally uses well-known, replaceable tools:
 - **File Manager:** Dolphin
 - **Bar:** Waybar
 - **Launcher:** Rofi
-- **Wallpaper Daemon:** swww
+- **Wallpaper Daemon:** awww
 - **Logout Menu:** Wlogout
 
 Any of these can be replaced without breaking the setup.  

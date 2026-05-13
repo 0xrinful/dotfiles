@@ -91,3 +91,4 @@ bat
 fd
 rg
 zoxide
+# tree-sitter-cli

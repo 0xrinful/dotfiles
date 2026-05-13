@@ -54,7 +54,7 @@ if command -v paru &>/dev/null; then
 elif command -v yay &>/dev/null; then
   PKG_MANAGER="yay"
 elif command -v pacman &>/dev/null; then
-  PKG_MANAGER="sudo pacman"
+  PKG_MANAGER="pacman"
 else
   print_error "No supported package manager found (pacman/yay/paru)"
   exit 1
@@ -67,20 +67,22 @@ mapfile -t packages <"$SCRIPT_DIR/packages.txt"
 packages_clean=()
 
 for pkg in "${packages[@]}"; do
-  # Remove comments and trim whitespace
-  pkg=$(echo "$pkg" | sed 's/#.*//' | xargs)
-  # Skip empty lines
+  pkg=${pkg//$'\r'/}     # handle CRLF
+  pkg=${pkg%%#*}         # strip comments
+  pkg=$(xargs <<<"$pkg") # trim
   [[ -z "$pkg" ]] && continue
   packages_clean+=("$pkg")
 done
 
-if [[ ${#packages_clean[@]} -gt 0 ]]; then
+if ((${#packages_clean[@]})); then
   print_info "Installing ${#packages_clean[@]} packages..."
-  if [[ "$PKG_MANAGER" == "sudo pacman" ]]; then
-    sudo pacman -S --needed --noconfirm "${packages_clean[@]}" || print_warning "Some packages may have failed to install"
+
+  if [[ "$PKG_MANAGER" == "pacman" ]]; then
+    sudo pacman -S --needed --noconfirm -- "${packages_clean[@]}"
   else
-    $PKG_MANAGER -S --needed --noconfirm "${packages_clean[@]}" || print_warning "Some packages may have failed to install"
+    $PKG_MANAGER -S --needed --noconfirm -- "${packages_clean[@]}"
   fi
+
   print_success "Package installation completed"
 else
   print_warning "No packages found in packages.txt"

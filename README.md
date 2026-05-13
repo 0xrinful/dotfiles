@@ -92,6 +92,7 @@ If you want a “safe to run anywhere” installer, this is **not** that.
 
 ```text
 .
+├── archives.manifest   # Optional archive → destination map for install.sh
 ├── install.sh         # Installs the rice and sets up packages
 ├── packages.txt       # List of packages to install
 ├── config/            # User configuration files (mirrors home)
@@ -116,6 +117,8 @@ If you want a “safe to run anywhere” installer, this is **not** that.
 - The `.config/zsh` folder contains the Zsh shell configuration. It is also referenced in `.zshenv`. If you don’t like this location, you can change it.
 
 - The Zsh config comes preloaded with useful tools and enhancements such as **zoxide**, **fzf**, and tab completion.
+
+- `archives.manifest` is an optional simple map of `archive|destination` used by `install.sh` to auto-unpack files into place (archive paths are repo-relative unless absolute; destinations can use `~` or `$HOME`).
 
 ---
 

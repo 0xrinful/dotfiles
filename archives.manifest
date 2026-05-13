@@ -1,0 +1,2 @@
+# archive|destination (archive path is relative to repo root unless absolute)
+# Example: archives/Tela-circle-dracula.tar.xz|$HOME/.local/share/icons

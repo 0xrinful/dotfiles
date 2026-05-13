@@ -26,6 +26,120 @@ print_error() {
   echo -e "${RED}[ERROR]${NC} $1"
 }
 
+expand_home_path() {
+  local path="$1"
+  path="${path/#\~/$HOME}"
+  path="${path//\$\{HOME\}/$HOME}"
+  path="${path//\$HOME/$HOME}"
+  echo "$path"
+}
+
+unpack_archive() {
+  local archive_path="$1"
+  local dest_path="$2"
+
+  if [[ ! -f "$archive_path" ]]; then
+    print_warning "Archive not found: $archive_path"
+    return 0
+  fi
+
+  local temp_dir
+  temp_dir=$(mktemp -d)
+
+  case "$archive_path" in
+  *.tar | *.tar.gz | *.tgz | *.tar.xz | *.tar.bz2 | *.tar.zst)
+    if ! tar -xf "$archive_path" -C "$temp_dir"; then
+      rm -rf "$temp_dir"
+      print_error "Failed to extract archive: $archive_path"
+      return 1
+    fi
+    ;;
+  *.zip)
+    if ! unzip -q "$archive_path" -d "$temp_dir"; then
+      rm -rf "$temp_dir"
+      print_error "Failed to extract archive: $archive_path"
+      return 1
+    fi
+    ;;
+  *)
+    print_warning "Unsupported archive type: $archive_path"
+    rm -rf "$temp_dir"
+    return 0
+    ;;
+  esac
+
+  mkdir -p "$dest_path"
+
+  local shopt_restore
+  shopt_restore="$(shopt -p dotglob nullglob)"
+  shopt -s dotglob nullglob
+  local extracted_items=("$temp_dir"/*)
+  eval "$shopt_restore"
+
+  if ((${#extracted_items[@]} == 0)); then
+    print_warning "Archive is empty: $archive_path"
+    rm -rf "$temp_dir"
+    return 0
+  fi
+
+  if ! mv -f "${extracted_items[@]}" "$dest_path"/; then
+    rm -rf "$temp_dir"
+    print_error "Failed to move extracted files to $dest_path"
+    return 1
+  fi
+
+  rm -rf "$temp_dir"
+  print_success "Unpacked $(basename "$archive_path") to $dest_path"
+}
+
+process_archive_manifest() {
+  local manifest_path="$1"
+
+  if [[ ! -f "$manifest_path" ]]; then
+    print_info "No archive manifest found, skipping archive unpack"
+    return 0
+  fi
+
+  print_info "Processing archive manifest..."
+
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    line=${line//$'\r'/}
+    line=${line%%#*}
+    line=$(xargs <<<"$line")
+    [[ -z "$line" ]] && continue
+
+    if [[ "$line" != *"|"* ]]; then
+      print_warning "Invalid manifest entry (expected archive|destination): $line"
+      continue
+    fi
+
+    local archive_entry dest_entry
+    archive_entry="${line%%|*}"
+    dest_entry="${line#*|}"
+    archive_entry=$(xargs <<<"$archive_entry")
+    dest_entry=$(xargs <<<"$dest_entry")
+
+    if [[ -z "$archive_entry" || -z "$dest_entry" ]]; then
+      print_warning "Invalid manifest entry: $line"
+      continue
+    fi
+
+    local archive_path dest_path
+    if [[ "$archive_entry" = /* ]]; then
+      archive_path="$archive_entry"
+    else
+      archive_path="$SCRIPT_DIR/$archive_entry"
+    fi
+
+    dest_path=$(expand_home_path "$dest_entry")
+    if [[ "$dest_path" != /* ]]; then
+      dest_path="$HOME/$dest_path"
+    fi
+
+    unpack_archive "$archive_path" "$dest_path"
+  done <"$manifest_path"
+}
+
 # Check if script is run as root
 if [[ $EUID -eq 0 ]]; then
   print_error "This script should NOT be run as root (don't use sudo)"
@@ -36,6 +150,7 @@ fi
 # Get the directory where the script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_DIR="$SCRIPT_DIR/config"
+ARCHIVE_MANIFEST="$SCRIPT_DIR/archives.manifest"
 
 print_info "Rice installation starting..."
 print_info "Script directory: $SCRIPT_DIR"
@@ -166,7 +281,10 @@ cp "$CONFIG_DIR/.zshenv" "$HOME/"
 
 print_success "All configuration files copied"
 
-# Step 4: Set executable permissions for scripts
+# Step 4: Unpack archives from manifest
+process_archive_manifest "$ARCHIVE_MANIFEST"
+
+# Step 5: Set executable permissions for scripts
 print_info "Setting executable permissions for scripts in ~/.local/bin..."
 
 chmod +x "$HOME/.local/bin"/*.sh 2>/dev/null || true
@@ -174,14 +292,14 @@ chmod +x "$HOME/.local/bin"/*.sh 2>/dev/null || true
 find "$HOME/.local/bin" -type f -exec chmod +x {} \;
 print_success "Executable permissions set"
 
-# Step 5: Update font cache
+# Step 6: Update font cache
 if command -v fc-cache &>/dev/null; then
   print_info "Updating font cache..."
   fc-cache -fv &>/dev/null
   print_success "Font cache updated"
 fi
 
-# Step 6: Change shell to zsh
+# Step 7: Change shell to zsh
 print_info "Changing default shell to zsh..."
 
 if command -v zsh &>/dev/null; then
@@ -198,7 +316,7 @@ else
   exit 1
 fi
 
-# Step 7: Enable systemd user services
+# Step 8: Enable systemd user services
 print_info "Enabling systemd user services..."
 
 # Add service dependencies to niri.service
@@ -220,7 +338,7 @@ else
   print_warning "polkit-gnome.service not found"
 fi
 
-# Step 8: Final information
+# Step 9: Final information
 echo ""
 print_success "╔════════════════════════════════════════════════════════════╗"
 print_success "║          Rice installation completed successfully!        ║"

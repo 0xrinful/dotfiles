@@ -75,6 +75,7 @@ fzf
 btop
 # evince
 # superfile
+# yazi
 # rnote
 # celluloid
 # imv

@@ -1,0 +1,4 @@
+# archive|destination (archive path is relative to repo root unless absolute)
+archives/icons.tar.xz|$HOME/.local/share
+archives/fonts.tar.xz|$HOME/.local/share
+archives/Wallbash-Gtk.tar.gz|$HOME/.local/share/themes

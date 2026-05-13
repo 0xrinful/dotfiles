@@ -150,7 +150,7 @@ fi
 # Get the directory where the script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_DIR="$SCRIPT_DIR/config"
-ARCHIVE_MANIFEST="$SCRIPT_DIR/archives.manifest"
+ARCHIVE_MANIFEST="$SCRIPT_DIR/archives.lst"
 
 print_info "Rice installation starting..."
 print_info "Script directory: $SCRIPT_DIR"
@@ -284,7 +284,18 @@ print_success "All configuration files copied"
 # Step 4: Unpack archives from manifest
 process_archive_manifest "$ARCHIVE_MANIFEST"
 
-# Step 5: Set executable permissions for scripts
+# Step 5: Install SDDM theme
+
+archive_path="./archives/Sddm_Candy.tar.gz"
+sddm_themes_dir="/usr/share/sddm/themes"
+sddm_conf_dir="/etc/sddm.conf.d"
+sudo mkdir -p "$sddm_themes_dir" "$sddm_conf_dir"
+sudo tar -xzf "$archive_path" -C "$sddm_themes_dir"
+sudo cp -f "$sddm_themes_dir/Candy/sddm-file.conf" "$sddm_conf_dir/theme.conf"
+
+print_success "SDDM theme installed"
+
+# Step 6: Set executable permissions for scripts
 print_info "Setting executable permissions for scripts in ~/.local/bin..."
 
 chmod +x "$HOME/.local/bin"/*.sh 2>/dev/null || true
@@ -292,14 +303,14 @@ chmod +x "$HOME/.local/bin"/*.sh 2>/dev/null || true
 find "$HOME/.local/bin" -type f -exec chmod +x {} \;
 print_success "Executable permissions set"
 
-# Step 6: Update font cache
+# Step 7: Update font cache
 if command -v fc-cache &>/dev/null; then
   print_info "Updating font cache..."
   fc-cache -fv &>/dev/null
   print_success "Font cache updated"
 fi
 
-# Step 7: Change shell to zsh
+# Step 8: Change shell to zsh
 print_info "Changing default shell to zsh..."
 
 if command -v zsh &>/dev/null; then
@@ -316,7 +327,7 @@ else
   exit 1
 fi
 
-# Step 8: Enable systemd user services
+# Step 9: Enable systemd user services
 print_info "Enabling systemd user services..."
 
 # Add service dependencies to niri.service
@@ -338,7 +349,7 @@ else
   print_warning "polkit-gnome.service not found"
 fi
 
-# Step 9: Final information
+# Step 10: Final information
 echo ""
 print_success "╔════════════════════════════════════════════════════════════╗"
 print_success "║          Rice installation completed successfully!        ║"
